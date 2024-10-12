@@ -1,6 +1,6 @@
 import React from "react"
 import sourceImages from "../component/images"
-
+import { Link } from "react-router-dom"
 
 function Coverpage(){
     return(
@@ -18,7 +18,7 @@ function Coverpage(){
              })}
             
             <div className="footerNote">
-            <p className="coverParagraph">Stay informed and engaged with the world's most important stories. <a style={{textDecoration:"none"}} href="/signup">Sign up</a> or <a style={{textDecoration:"none"}} href="/signin">Sign in</a> today 
+            <p className="coverParagraph">Stay informed and engaged with the world's most important stories. <Link style={{textDecoration:"none"}} to="/signup">Sign up</Link> or <Link style={{textDecoration:"none"}} to="/signin">Sign in</Link> today 
             for exculisve access to the latest news from trusted sources, personalized updates and insightful analysis - ensuring you're always in the know. 
             </p>
            </div> 
