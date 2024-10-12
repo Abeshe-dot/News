@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import {useNavigate} from "react-router-dom";
+import {useNavigate,Link} from "react-router-dom";
 import Navbar from "../component/Navbar";
 import Footer from "../component/Footer";
 
@@ -70,8 +70,8 @@ function Home() {
                     
                   <div className="homeButton">
                       
-                       <a className="btn btn-outline-info btn-lg " href="/headlines" role="button">Headlines</a>
-                       <a className="btn btn-outline-info btn-lg " href="/everything" role="button">Everything</a>
+                       <Link className="btn btn-outline-info btn-lg " to="/headlines" role="button">Headlines</Link>
+                       <Link className="btn btn-outline-info btn-lg " to="/everything" role="button">Everything</Link>
                   
                   </div>
                   

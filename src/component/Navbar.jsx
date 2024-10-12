@@ -8,6 +8,7 @@ import ArticleIcon from '@mui/icons-material/Article';
 import HomeIcon from '@mui/icons-material/Home';
 import HistoryIcon from '@mui/icons-material/History';
 import FirstPageIcon from '@mui/icons-material/FirstPage';
+import { Link } from "react-router-dom";
 function Navbar(props){
     const baseUrl= "https://news-backend-sj97.onrender.com"
 
@@ -35,7 +36,7 @@ function Navbar(props){
     <div className="container navbarSec" >
         <nav className="navbar bg-body-tertiary fixed-top navSec container">
             <div className="container-fluid">
-                <a href="/home" style={{textDecoration:"none",fontFamily:"Montserrat"}}>   <img className="navbar-brand" src="images/logo.png" alt="Logo" /> News Aggregator</a>
+                <Link to="/home" style={{textDecoration:"none",fontFamily:"Montserrat"}}>   <img className="navbar-brand" src="images/logo.png" alt="Logo" /> News Aggregator</Link>
                 <button
                     className="navbar-toggler"
                     type="button"
@@ -67,19 +68,19 @@ function Navbar(props){
                     <div className="offcanvas-body ">
                         <ul className="navbar-nav justify-content-end flex-grow-1 pe-3 offcanvas-nav ">
                             <li className="nav-item">
-                                <a className="nav-link " role="button" href="/"><FirstPageIcon />First Page</a>
+                                <Link className="nav-link " role="button" to="/"><FirstPageIcon />First Page</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" role="button" href="/h-history"><HistoryIcon />History</a>
+                                <Link className="nav-link" role="button" to="/h-history"><HistoryIcon />History</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" role="button" href="/home"><HomeIcon />Home</a>
+                                <Link className="nav-link" role="button" to="/home"><HomeIcon />Home</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" role="button" href="/headlines"><ArticleIcon />Headlines</a>
+                                <Link className="nav-link" role="button" to="/headlines"><ArticleIcon />Headlines</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" role="button" href="/everything"><ArticleIcon />Everything</a>
+                                <Link className="nav-link" role="button" to="/everything"><ArticleIcon />Everything</Link>
                             </li>
 
                             <li className="nav-item">

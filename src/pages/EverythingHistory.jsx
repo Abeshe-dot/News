@@ -1,6 +1,6 @@
 import React,{useState,useEffect,useRef} from "react"
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 import Navbar from "../component/Navbar";
 import Footer from "../component/Footer";
 import History from "../component/History";
@@ -98,8 +98,8 @@ function EverythingHistory(){
                       />
           <div className="history text-center">
              <div className="btn-group" role="group" aria-label="Basic example">
-                    <a role="button" href="/h-history" className="btn btn-outline-info ">Headlines History</a>
-                    <a role="button" href= "/e-history" className="btn btn-outline-info ">Everything History</a>
+                    <Link role="button" to="/h-history" className="btn btn-outline-info ">Headlines History</Link>
+                    <Link role="button" to= "/e-history" className="btn btn-outline-info ">Everything History</Link>
                     
                 </div>
                 <div className=" text-end">

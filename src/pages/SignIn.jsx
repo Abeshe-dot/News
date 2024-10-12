@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react"
-import {useNavigate} from "react-router-dom";
+import {useNavigate,Link} from "react-router-dom";
 import FacebookIcon from '@mui/icons-material/Facebook';
 import {FacebookOutlined} from "@mui/icons-material";
 import Input from "../component/Input";
@@ -8,6 +8,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import Footer from "../component/Footer";
 import axios from "axios";
 import { TailSpin } from 'react-loader-spinner';
+
 function SignIn() {
     const date = new Date().toLocaleDateString()
     const baseUrl = "https://news-backend-sj97.onrender.com"
@@ -92,17 +93,17 @@ function SignIn() {
                     </div>
 
                     <p className="coverParagraph">Don't have an account,
-                        <a
-                            href="/signup"
+                        <Link
+                            to="/signup"
                             style={{
                                 textDecoration: "none"
                             }}>
-                            Create One</a>. Or
-                        <a
-                            href="/"
+                            Create One</Link>. Or
+                        <Link
+                            to="/"
                             style={{
                                 textDecoration: "none"
-                            }}>back</a>
+                            }}>back</Link>
                     </p>
                     
                 </form>
