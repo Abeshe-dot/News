@@ -18,7 +18,7 @@ function SignUp(){
     const navigate= useNavigate()
 
     useEffect(() => {
-   axios.get(baseUrl + "/signup")
+   axios.get(baseUrl + "/signup",{withCredentials: true})
      .then((res) => {
        setNewsUser(res.data);
        //setLoading(true)
