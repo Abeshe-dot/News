@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 function Navbar(props){
     const baseUrl= "https://news-backend-sj97.onrender.com"
 
-    axios.post(baseUrl +"/home",{withCredentials: true})
+    axios.get(baseUrl +"/home",{withCredentials: true})
          .then(res=>{
             console.log(res.data)
          })
