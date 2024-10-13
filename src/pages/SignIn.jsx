@@ -18,7 +18,7 @@ function SignIn() {
 
     useEffect(() => {
         axios
-            .get(baseUrl + "/home")
+            .get(baseUrl + "/home",{withCredentials: true})
             .then((res) => {
                 setNewsUser(res.data);
                // setLoading(true) //loading becomes false after data fetched
