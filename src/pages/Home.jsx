@@ -11,33 +11,20 @@ function Home() {
     const baseUrl = "https://news-backend-sj97.onrender.com";
 
     useEffect(() => {
-     const checkAuth = async () => {
-    try {
-        const url = `${baseUrl}/home`; // Store the URL in a variable for logging
-        console.log(url);
-        const res = await axios.get(url, {
-            withCredentials: true,
-            validateStatus: function (status) {
-                return status < 500; // Resolve only if the status code is less than 500
+        const checkAuth = async () => {
+            try {
+                // Ensure withCredentials is true to send the session cookie
+                const res = await axios.get(baseUrl + "/home", {withCredentials: true});
+                console.log(res.data); // Log the response for debugging
+                setUserAuthenticated(true);
+                fetchData()
+            } catch (err) {
+                console.error(err);
+                setUserAuthenticated(false);
+                navigate("/signin"); // Navigate to signin if not authenticated
             }
-        });
-        
-        if (res.status === 200) {
-            console.log(res.data);
-            setUserAuthenticated(true);
-            fetchData();
-        } else {
-            console.error(`Error fetching: ${res.status}`);
-            setUserAuthenticated(false);
-            navigate("/signin");
-        }
-    } catch (err) {
-        console.error(`Error: ${err.message}`);
-        setUserAuthenticated(false);
-        navigate("/signin");
-    }
-};
-
+           
+        };
          const fetchData= async () => {
             try{
                 //get the user profile from the backend
