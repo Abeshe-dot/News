@@ -1,17 +1,17 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import {useNavigate,Link} from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Navbar from "../component/Navbar";
 import Footer from "../component/Footer";
 
 function Home() {
     const navigate = useNavigate();
     const [userAuthenticated, setUserAuthenticated] = useState(false);
-    const [userData,setUserData]=useState({})
-    const baseUrl = "https://news-backend-sj97.onrender.com";
+    const [userData, setUserData] = useState({});
+    const baseUrl = "https://news-backend-sj97.onrender.com"
 
-    useEffect(() => {
-          const checkAuth = async () => {
+       useEffect(() => {
+        const checkAuth = async () => {
             try {
                 console.log(`${baseUrl}/home`);
                 const res = await axios.get(`${baseUrl}/home`, {
@@ -36,7 +36,8 @@ function Home() {
                 navigate("/signin");
             }
         };
-         const fetchData = async () => {
+
+        const fetchData = async () => {
             try {
                 const userProfile = await axios.get(`${baseUrl}/profile`, {
                     withCredentials: true,
@@ -53,45 +54,28 @@ function Home() {
         checkAuth();
     }, [navigate]);
 
+
     return (
-    <div>
-             
-                <Navbar 
-                name={userData.username}
-                id={userData.id} 
+        <div>
+            <Navbar name={userData.username} id={userData.id} />
+            <div className="container">
+                <div className="homeDescription">
+                    <h4 >Explore the Latest News!</h4>
+                    <hr />
+                   <p > <strong>Headlines Button:</strong> Click this to see the top trending news stories related to the subject you're interested in. These are the most popular and talked-about headlines right now!</p>
+                   <p > <strong>Everything Button:</strong> If you want to dive deeper, click here to get all available news articles on that subject. This includes everything from recent reports to older stories, giving you a comprehensive view of what's happening.</p>
 
-                />
-              
-        <div className="container" >
-                  
-            <div className="homeDescription">
-                  
-                   <h4 >Explore the Latest News!</h4>
-                  
-                    <hr  />
-                 
-                    <p > <strong>Headlines Button:</strong> Click this to see the top trending news stories related to the subject you're interested in. These are the most popular and talked-about headlines right now!</p>
-                    <p > <strong>Everything Button:</strong> If you want to dive deeper, click here to get all available news articles on that subject. This includes everything from recent reports to older stories, giving you a comprehensive view of what's happening.</p>
-
-                    <p >Happy reading!</p> 
-                   
-                   <hr />
-                  
-                  </div> 
-                    
-                  <div className="homeButton">
-                      
-                       <Link className="btn btn-outline-info btn-lg " to="/headlines" role="button">Headlines</Link>
-                       <Link className="btn btn-outline-info btn-lg " to="/everything" role="button">Everything</Link>
-                  
-                  </div>
-                  
+                   <p>Happy reading!</p>
+                    <hr />
                 </div>
-
-                <Footer />
-                     
-     </div>
-            );
+                <div className="homeButton">
+                    <Link className="btn btn-outline-info btn-lg" to="/headlines" role="button">Headlines</Link>
+                    <Link className="btn btn-outline-info btn-lg" to="/everything" role="button">Everything</Link>
+                </div>
+            </div>
+            <Footer />
+        </div>
+    );
 }
 
 export default Home;

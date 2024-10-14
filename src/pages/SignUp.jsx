@@ -9,7 +9,6 @@ import Input from "./../component/Input";
 import axios from "axios";
 import Footer from "../component/Footer";
 import { TailSpin } from 'react-loader-spinner';
-import { Link } from "react-router-dom";
 function SignUp(){
     //const date= new Date().toLocaleDateString()
     const baseUrl= "https://news-backend-sj97.onrender.com"
@@ -97,12 +96,12 @@ return (
                     
                      Or Sign up with
                      
-                    <Link className="buttonMargin form-control btn btn-outline-danger w-100 py-2" type="button" to={`${baseUrl}/auth/google`} role="button"><GoogleIcon />  Google</Link>
-                    <Link className="buttonMargin form-control btn btn-outline-primary w-100 py-2" type="submit"  to={`${baseUrl}/auth/facebook`} role="button"><FacebookOutlined />  facebook </Link>
-                    <Link className="buttonMargin form-control btn btn-outline-dark w-100 py-2" type="submit"  to={`${baseUrl}/auth/github`} role="button" ><GitHubIcon />  Github </Link>
+                    <a className="buttonMargin form-control btn btn-outline-danger w-100 py-2" type="button" href={`${baseUrl}/auth/google`} role="button"><GoogleIcon />  Google</a>
+                    <a className="buttonMargin form-control btn btn-outline-primary w-100 py-2" type="submit"  href={`${baseUrl}/auth/facebook`} role="button"><FacebookOutlined />  facebook </a>
+                    <a className="buttonMargin form-control btn btn-outline-dark w-100 py-2" type="submit"  href={`${baseUrl}/auth/github`} role="button" ><GitHubIcon />  Github </a>
                     </div>
-                    <p className="coverParagraph">Already have an account, <Link to="/signin" style={{textDecoration:"none"}}> Sign in</Link>. 
-                     Or <Link to="/" style={{textDecoration:"none"}}>back</Link></p>
+                    <p className="coverParagraph">Already have an account, <a href="/signin" style={{textDecoration:"none"}}> Sign in</a>. 
+                     Or <a href="/" style={{textDecoration:"none"}}>back</a></p>
                     {/* <p className="mt-5 mb-3 text-body-secondary">&copy; {date} robelZeleke </p> */}
 
                 </form>
