@@ -18,7 +18,7 @@ function SignIn() {
 
     useEffect(() => {
         axios
-            .get(baseUrl + "/home",{withCredentials: true})
+            .get(baseUrl + "/home")
             .then((res) => {
                 setNewsUser(res.data);
                // setLoading(true) //loading becomes false after data fetched
@@ -29,22 +29,21 @@ function SignIn() {
             });
     }, []);
 
-    function checkUser(newUser) {
-        setLoading(true)
-       axios.post(baseUrl + "/signin", newUser, {withCredentials: true})
-            .then((res) => {
-                console.log(res.data);
-                navigate("/home");
-            })
-            .catch((err) => {
-                console.error(err);
-                navigate("/failed");
-            })
-            .finally(() => {
-                // Set loading to false only after all promises are settled
-                setLoading(false);
-            })
-          }
+   async function checkUser(newUser) {
+    setLoading(true);
+    try {
+        const res = await axios.post(baseUrl + "/signin", newUser, {withCredentials: true});
+        console.log(baseUrl+"/signin")
+        console.log(res.data);
+        navigate("/home");
+    } catch (err) {
+        console.error(err);
+        navigate("/failed");
+    } finally {
+        // Set loading to false only after all promises are settled
+        setLoading(false);
+    }
+}
         
 
     const handleSubmit = (event) => {
@@ -86,9 +85,9 @@ function SignIn() {
 
                         Or Sign in with
 
-                       <a className="buttonMargin form-control btn btn-outline-danger w-100 py-2" type="button" href={`${baseUrl}/auth/google`} role="button"><GoogleIcon />  Google</a>
-                       <a className="buttonMargin form-control btn btn-outline-primary w-100 py-2" type="submit"  href={`${baseUrl}/auth/facebook`} role="button"><FacebookOutlined />  facebook </a>
-                       <a className="buttonMargin form-control btn btn-outline-dark w-100 py-2" type="submit"  href={`${baseUrl}/auth/github`} role="button" ><GitHubIcon />  Github </a>
+                       <Link className="buttonMargin form-control btn btn-outline-danger w-100 py-2" type="button" to={`${baseUrl}/auth/google`} role="button"><GoogleIcon />  Google</Link>
+                       <Link className="buttonMargin form-control btn btn-outline-primary w-100 py-2" type="submit"  to={`${baseUrl}/auth/facebook`} role="button"><FacebookOutlined />  facebook </Link>
+                       <Link className="buttonMargin form-control btn btn-outline-dark w-100 py-2" type="submit"  to={`${baseUrl}/auth/github`} role="button" ><GitHubIcon />  Github </Link>
                    
                     </div>
 

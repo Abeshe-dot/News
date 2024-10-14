@@ -18,7 +18,7 @@ function SignUp(){
     const navigate= useNavigate()
 
     useEffect(() => {
-   axios.get(baseUrl + "/signup",{withCredentials: true})
+   axios.get(baseUrl + "/signup")
      .then((res) => {
        setNewsUser(res.data);
        //setLoading(true)
@@ -97,9 +97,9 @@ return (
                     
                      Or Sign up with
                      
-                    <a className="buttonMargin form-control btn btn-outline-danger w-100 py-2" type="button" href={`${baseUrl}/auth/google`} role="button"><GoogleIcon />  Google</a>
-                    <a className="buttonMargin form-control btn btn-outline-primary w-100 py-2" type="submit"  href={`${baseUrl}/auth/facebook`} role="button"><FacebookOutlined />  facebook </a>
-                    <a className="buttonMargin form-control btn btn-outline-dark w-100 py-2" type="submit"  href={`${baseUrl}/auth/github`} role="button" ><GitHubIcon />  Github </a>
+                    <Link className="buttonMargin form-control btn btn-outline-danger w-100 py-2" type="button" to={`${baseUrl}/auth/google`} role="button"><GoogleIcon />  Google</Link>
+                    <Link className="buttonMargin form-control btn btn-outline-primary w-100 py-2" type="submit"  to={`${baseUrl}/auth/facebook`} role="button"><FacebookOutlined />  facebook </Link>
+                    <Link className="buttonMargin form-control btn btn-outline-dark w-100 py-2" type="submit"  to={`${baseUrl}/auth/github`} role="button" ><GitHubIcon />  Github </Link>
                     </div>
                     <p className="coverParagraph">Already have an account, <Link to="/signin" style={{textDecoration:"none"}}> Sign in</Link>. 
                      Or <Link to="/" style={{textDecoration:"none"}}>back</Link></p>

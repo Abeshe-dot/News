@@ -11,32 +11,44 @@ function Home() {
     const baseUrl = "https://news-backend-sj97.onrender.com";
 
     useEffect(() => {
-        const checkAuth = async () => {
+          const checkAuth = async () => {
             try {
-                // Ensure withCredentials is true to send the session cookie
-                const res = await axios.get(baseUrl + "/home", {withCredentials: true});
-                console.log(res.data); // Log the response for debugging
-                setUserAuthenticated(true);
-                fetchData()
+                console.log(`${baseUrl}/home`);
+                const res = await axios.get(`${baseUrl}/home`, {
+                    withCredentials: true,
+                    validateStatus: function (status) {
+                        return status < 500; // Resolve only if the status code is less than 500
+                    }
+                });
+                
+                // Check if response status indicates authentication success
+                if (res.status === 200) {
+                    console.log(res.data);
+                    setUserAuthenticated(true);
+                    fetchData();
+                } else {
+                    setUserAuthenticated(false);
+                    navigate("/signin");
+                }
             } catch (err) {
                 console.error(err);
                 setUserAuthenticated(false);
-                navigate("/signin"); // Navigate to signin if not authenticated
+                navigate("/signin");
             }
-           
         };
-         const fetchData= async () => {
-            try{
-                //get the user profile from the backend
-                const userProfile = await axios.get(baseUrl + "/profile", {withCredentials: true}); 
-                setUserData(userProfile.data)
-                console.log(userProfile.data)
-                console.log(userData)
+         const fetchData = async () => {
+            try {
+                const userProfile = await axios.get(`${baseUrl}/profile`, {
+                    withCredentials: true,
+                    validateStatus: function (status) {
+                        return status < 500; // Resolve only if the status code is less than 500
+                    }
+                });
+                setUserData(userProfile.data);
+            } catch (err) {
+                console.error(err);
             }
-            catch(err){
-                console.error(err)
-            }
-         }
+        };
 
         checkAuth();
     }, [navigate]);
@@ -50,16 +62,15 @@ function Home() {
 
                 />
               
-                <div className="container" >
+        <div className="container" >
                   
-                 <div className="homeDescription">
+            <div className="homeDescription">
                   
                    <h4 >Explore the Latest News!</h4>
                   
                     <hr  />
                  
                     <p > <strong>Headlines Button:</strong> Click this to see the top trending news stories related to the subject you're interested in. These are the most popular and talked-about headlines right now!</p>
-
                     <p > <strong>Everything Button:</strong> If you want to dive deeper, click here to get all available news articles on that subject. This includes everything from recent reports to older stories, giving you a comprehensive view of what's happening.</p>
 
                     <p >Happy reading!</p> 
